@@ -92,6 +92,7 @@ def main():
 
     :return:
     """
+
     def representative_dataset():
         representative_images = list(
             (lambda p, s: filter(re.compile(p).match, s))(r'.*\.(jpg|png|jpeg)', glob('representative_dataset/*')))

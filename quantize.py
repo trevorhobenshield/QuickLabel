@@ -1,16 +1,16 @@
 import os
 import warnings
-from glob import glob
-from pathlib import Path
-from typing import Optional
-import os
-import re
-import numpy as np
-from PIL import Image
 
 warnings.filterwarnings("ignore")
 os.environ['TF_CPP_MIN_LOG_LEVEL'] = '3'
 os.environ['TFHUB_CACHE_DIR'] = '/home/x/tfhub_modules'  # todo: change to user cache dir
+
+import re
+from glob import glob
+from pathlib import Path
+from typing import Optional
+import numpy as np
+from PIL import Image
 import tensorflow as tf
 import tensorflow_hub as hub
 

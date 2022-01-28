@@ -41,8 +41,8 @@ Times are shown below, in case you want to swap out slower/faster networks.
 <br>
 
 
-Final output is shown. Directories are created for each class that was found, which matches your keywords
-in `keywords.txt`. Images are moved into their respective class-label directories.
+Final output is shown. Directories are created for each class that was found, which match your keywords
+in `keywords.txt`. Images are moved into their respective class-labeled directories.
 
 <br>
 

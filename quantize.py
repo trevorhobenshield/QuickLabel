@@ -88,12 +88,21 @@ def main():
     """
     Quantize model
 
-    Note: The dimensions in `(Image.open(image_path).resize((x, y)))` should match the dimensions specified in `input_shape`
+    Note: The dimensions in `(Image.open(image_path).resize((x, y)))`
+          should match the dimensions specified in `input_shape`
 
     :return:
     """
 
     def representative_dataset():
+        """
+        Representative dataset generator
+
+        For full integer quantization (tf.int8, tf.uint8), you need to calibrate the range
+        of all floating-point tensors in the model by including a small subset of
+        the training or validation data
+        :return:
+        """
         representative_images = list(
             (lambda p, s: filter(re.compile(p).match, s))(r'.*\.(jpg|png|jpeg)', glob('representative_dataset/*')))
         print('# images = ', len(representative_images))

@@ -47,7 +47,3 @@ in `keywords.txt`. Images are moved into their respective class-label directorie
 <br>
 
 ![](resources/output.png)
-
-### Todo
-
-Rewrite in Julia

@@ -54,6 +54,7 @@ def label(path: str, matches: Generator[tuple[str, str], Any, None]) -> None:
     :param path: path to image directory that previously had its contents labeled
     :param matches: generator of tuples containing image filenames and their predicted classes
     """
+    matches = list(matches) # need to convert generator here
     [Path(f'{path}/{cls}').mkdir(parents=True, exist_ok=False) for cls in
      {c for _, c in matches} - {f.name for f in Path(path).iterdir() if f.is_dir()}]
     [print(f"{(o := f'{path}/{img}')} -> {Path(o).rename(f'{path}/{cls}/{img}')}") for img, cls in matches]

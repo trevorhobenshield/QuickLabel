@@ -47,3 +47,13 @@ in `keywords.txt`. Images are moved into their respective class-labeled director
 <br>
 
 ![](resources/output.png)
+
+To undo the labeling and remove empty directories you can run this:
+```python
+import shutil
+from pathlib import Path
+path = 'images/'
+[print(f'* {y} -> {Path(y).rename((x.parent / y.name))}') for x in
+(z for z in Path(path).iterdir() if z.is_dir()) for y in x.iterdir()]
+[shutil.rmtree(_) for _ in Path(path).iterdir() if _.is_dir()]
+```

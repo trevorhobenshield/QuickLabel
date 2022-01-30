@@ -7,7 +7,6 @@ os.environ['TFHUB_CACHE_DIR'] = '/home/x/tfhub_modules'  # todo: change to user 
 
 import re
 from glob import glob
-from pathlib import Path
 from typing import Optional
 import numpy as np
 from PIL import Image
@@ -74,13 +73,16 @@ def quantize(model_url: str,
             tf.lite.OpsSet.TFLITE_BUILTINS
         ]
     if not path:
-        fname = f"{model_url.split('tfhub.dev/')[-1].replace('/', '_')}_qt_{quantization}.tflite"
+        fname = f"{model_url.split('tfhub.dev/')[-1].replace('/', '_')}_qt_{quantization}"
         x = 'rishit-dagli sayakpaul ml-kit google tensorflow agripredict adityakane2001 imagenet'.split()
         for u in x:
             fname = fname.replace(u, '')
-        Path(f"models/{fname.lstrip('_')}").write_bytes(converter.convert())
+        tflite_buffer = converter.convert()
+        tf.io.gfile.GFile(f'models/{fname.lstrip("_")}.tflite', 'wb').write(tflite_buffer)
     else:
-        Path((fname := f'{path}.tflite')).write_bytes(converter.convert())
+        fname = f'{path}.tflite'
+        tflite_buffer = converter.convert()
+        tf.io.gfile.GFile(fname, 'wb').write(tflite_buffer)
     return fname
 
 
@@ -110,8 +112,8 @@ def main():
             yield [np.r_[[np.array(Image.open(image_path).resize((224, 224))) / 255.]].astype(np.float32)]
 
     quantize(**{
-        'model_url': 'https://tfhub.dev/google/imagenet/nasnet_mobile/classification/5',
-        'input_shape': (224, 224, 3),  # match representative_dataset data shape with this shape
+        'model_url': 'https://tfhub.dev/google/imagenet/efficientnet_v2_imagenet21k_ft1k_s/classification/2',
+        'input_shape': (384, 384, 3),  # match representative_dataset data shape with this shape
         'quantization': 'float16',  # 16x8 and float16 currently supported
         'representative_dataset': representative_dataset
     })

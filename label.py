@@ -105,7 +105,7 @@ def run_models_parallel(cache: str,
 
 
 def image_batches(cache: str,
-                  model: tuple[str, tuple[int, ...]],
+                  model: tuple[str, tuple[int, int]],
                   images: list,
                   labels: list) -> dict:
     """
@@ -134,7 +134,7 @@ def image_batches(cache: str,
 
 
 def run_image_batches(cache: str,
-                      model: tuple[str, tuple[int, ...]],
+                      model: tuple[str, tuple[int, int]],
                       img_dir: str,
                       keywords: str,
                       n_jobs=-1,
@@ -151,7 +151,7 @@ def run_image_batches(cache: str,
     :param n: number of cores available
     :return: None
     """
-    images = glob(fr'{img_dir}\*')
+    images = glob(f'{img_dir}/*')
     labels = label_guess(cache, model, img_dir)
     df = pd.DataFrame(Parallel(n_jobs=n_jobs, prefer=threads)(
         delayed(image_batches)(cache, model, img, labels) for img in np.array_split(r_[images], n)))
@@ -204,22 +204,23 @@ def sequential(cache: str,
 
 
 def main():
-    ## Run multiple models in parallel
-    run_models_parallel(cache='models',
-             models=[
-                 ('nasnet_mobile_classification_5_qt_float16.tflite', (224, 224)),
-                 ('nasnet_mobile_classification_5_qt_16x8.tflite', (224, 224)),
-             ],
-             img_dir='images',
-             keywords='keywords.txt')
+    ## Run multiple models in parallel (CPU)
+    # run_models_parallel(cache='models',
+    #          models=[
+    #              ('nasnet_mobile_classification_5_qt_float16.tflite', (224, 224)),
+    #              ('nasnet_mobile_classification_5_qt_16x8.tflite', (224, 224)),
+    #          ],
+    #          img_dir='images',
+    #          keywords='keywords.txt')
+    #
 
-    ## Run a copies of a single model over batches of images in parallel
-    # run_image_batches(cache='models',
-    #                   model=('nasnet_mobile_classification_5_qt_float16.tflite', (224, 224)),
-    #                   img_dir='images',
-    #                   keywords='keywords.txt')
+    ## Run a copies of a single model over batches of images in parallel (CPU)
+    run_image_batches(cache='models',
+                      model=('efficientnet_v2_21k_ft1k_s_classification_2_qt_float16.tflite', (384, 384)),
+                      img_dir='images',
+                      keywords='keywords.txt')
 
-    ## Slowly run each model sequentially
+    ## Slowly run each model sequentially (CPU)
     # sequential(cache='models',
     #            models=[
     #                ('nasnet_mobile_classification_5_qt_float16.tflite', (224, 224)),

@@ -57,3 +57,5 @@ path = 'images/'
 (z for z in Path(path).iterdir() if z.is_dir()) for y in x.iterdir()]
 [shutil.rmtree(_) for _ in Path(path).iterdir() if _.is_dir()]
 ```
+
+

@@ -4,7 +4,7 @@ from pathlib import Path
 
 def undo_labeling(img_directory: str) -> None:
     """
-    Undo labeling performed by `label.py`
+    Undo labeling performed by `tensorflow_label.py`
 
     :param img_directory: path to image directory that previously had it's contents labeled
     :return: None

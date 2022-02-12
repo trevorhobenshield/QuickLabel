@@ -2,7 +2,9 @@
 
 Parallelized dataset auto-labeling using SOTA quantized (PTQ) models in PyTorch, TensorFlow, and Keras
 
-## Example - TensorFlow
+## Examples
+
+### TensorFlow
 
 `label-interactive.ipynb`
 

@@ -204,7 +204,7 @@ def sequential(cache: str,
 
 
 def main():
-    ## Run multiple models in parallel (CPU)
+    ## Run multiple models in parallel
     # run_models_parallel(cache='models',
     #          models=[
     #              ('nasnet_mobile_classification_5_qt_float16.tflite', (224, 224)),
@@ -214,13 +214,13 @@ def main():
     #          keywords='keywords.txt')
     #
 
-    ## Run a copies of a single model over batches of images in parallel (CPU)
+    ## Run copies of a model over batches of images in parallel
     run_image_batches(cache='models',
                       model=('efficientnet_v2_21k_ft1k_s_classification_2_qt_float16.tflite', (384, 384)),
                       img_dir='images',
                       keywords='keywords.txt')
 
-    ## Slowly run each model sequentially (CPU)
+    ## Run each model sequentially
     # sequential(cache='models',
     #            models=[
     #                ('nasnet_mobile_classification_5_qt_float16.tflite', (224, 224)),

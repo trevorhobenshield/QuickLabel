@@ -49,5 +49,3 @@ in `keywords.txt`. Images are moved into their respective class-labeled director
 <br>
 
 ![](resources/output.png)
-
-

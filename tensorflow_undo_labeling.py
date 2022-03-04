@@ -14,7 +14,7 @@ def undo_labeling(img_directory: str) -> None:
         for img in d.iterdir():
             new = d.parent / img.name
             print('*', img, '->', new)
-            Path(img).rename(new)
+            img.rename(new)
     # remove directories
     [shutil.rmtree(p) for p in Path(img_directory).iterdir() if p.is_dir()]
 

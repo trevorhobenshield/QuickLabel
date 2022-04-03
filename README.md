@@ -21,7 +21,7 @@ soccer ball
 <br>
 
 
-Networks perform inference on the data inside `images/`. User is notified as to which classes have been found, if any.
+Models perform inference on the data inside `images/`. User is notified as to which classes have been found, if any.
 
 <br>
 

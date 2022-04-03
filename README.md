@@ -1,6 +1,6 @@
 # QuantLabel
 
-Parallelized dataset auto-labeling using SOTA quantized (PTQ) models in PyTorch, TensorFlow, and Keras
+Quick dataset auto-labeling using quantized (PTQ) models in PyTorch, TensorFlow, and Keras
 
 ## Examples
 

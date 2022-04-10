@@ -21,7 +21,7 @@ soccer ball
 <br>
 
 
-Models perform inference on the data inside `images/`. User is notified as to which classes have been found, if any.
+Models perform inference on the data inside `images/`.
 
 <br>
 
@@ -33,7 +33,7 @@ Models perform inference on the data inside `images/`. User is notified as to wh
 <br>
 
 
-Times are shown below, in case you want to swap out slower/faster networks.
+Runtimes are shown below.
 
 <br>
 
@@ -43,7 +43,7 @@ Times are shown below, in case you want to swap out slower/faster networks.
 <br>
 
 
-Final output is shown. Directories are created for each class that was found, which match your keywords
+Final output is shown. Directories are created for each class that was found which match your keywords
 in `keywords.txt`. Images are moved into their respective class-labeled directories.
 
 <br>

@@ -1,6 +1,6 @@
 # QuickLabel
 
-Quick dataset auto-labeling using quantized (PTQ) models in PyTorch, TensorFlow, and Keras
+Quick dataset labeling using quantized (PTQ) models in PyTorch, TensorFlow, and Keras
 
 ## Examples
 
